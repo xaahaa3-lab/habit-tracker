@@ -9,7 +9,7 @@ const fs      = require("fs");
 const cors    = require("cors");
 
 const app  = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const DB   = "./habits.json"; // Our simple "database" file
 
 // --- SETUP ---
@@ -82,6 +82,6 @@ app.delete("/habits/:id", (req, res) => {
 
 
 // --- START SERVER ---
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
